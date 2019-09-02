@@ -1,0 +1,16 @@
+# IDE Files
+.vscode
+
+# Tag files for source code
+tags
+
+# CXX Objects
+*.o
+
+# Librarys
+*.so
+*.so*
+
+# Executables
+logger_test
+
