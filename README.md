@@ -1,3 +1,6 @@
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/nakinx/logger.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/nakinx/logger/alerts/)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/nakinx/logger.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/nakinx/logger/alerts/)
+
 Logger
 ======
 
@@ -18,7 +21,7 @@ Result:
 
     Simple record example!
 
-To create the log header with informations about data/time, function, file, line and severity, during the creation of logger or even after you need set format info.
+To create the log header with informations like data/time, function, file, line and severity, during the creation of logger or even after you need set format info.
 
 Example:
 
