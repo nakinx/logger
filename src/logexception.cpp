@@ -24,12 +24,16 @@
 
 #include "logexception.h"
 
-LoggerException::LoggerException(int code,
-                                 std::string msg) {
+LoggerException::LoggerException(const int & code,
+                                 const std::string & msg) {
     _code = code;
     _msg = msg;
 }
 
-const char * LoggerException::what() const throw(){
+const char * LoggerException::what() const throw() {
     return _msg.c_str();
+}
+
+int LoggerException::code() const {
+    return _code;
 }

@@ -69,8 +69,8 @@ public:
      *         Invalid logger name.
      *         Logger name already exist.
      */
-    void buildLogger(const std::string name,
-                     const std::string path);
+    void buildLogger(const std::string & name,
+                     const std::string & path);
 
     /**
      * Destroy logger instance.
@@ -80,7 +80,7 @@ public:
      * @throws LoggerException
      *         Logger name doesn't exist.
      */
-    void destroyLogger(const std::string name);
+    void destroyLogger(const std::string & name);
 
     /**
      * Returns the logger instance based on the provide name.
@@ -92,7 +92,7 @@ public:
      * @throws LoggerException
      *         Logger name doesn't exist.
      */
-    std::shared_ptr<Logger> getLogger(const std::string name);
+    std::shared_ptr<Logger> getLogger(const std::string & name);
 
 private:
     /**

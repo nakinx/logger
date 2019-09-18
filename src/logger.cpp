@@ -38,7 +38,7 @@
 
 #include <cstring>
 
-Logger::Logger(LogSetting logSetting)
+Logger::Logger(const LogSetting & logSetting)
     : _logSetting(logSetting) {
     enableAllSeverity();
 }
@@ -46,22 +46,22 @@ Logger::Logger(LogSetting logSetting)
 Logger::~Logger() {
 }
 
-bool Logger::checkActiveSeverity(SeverityLevel sl) {
+bool Logger::checkActiveSeverity(const SeverityLevel & sl) {
     if (_logSetting.getActiveSeverity() & static_cast<int>(sl))
         return true;
 
     return false;
 }
 
-void Logger::setActiveSeverity(const int as) {
+void Logger::setActiveSeverity(const int & as) {
     _logSetting.setActiveSeverity(as);
 }
 
-void Logger::addActiveSeverity(const int as) {
+void Logger::addActiveSeverity(const int & as) {
     _logSetting.setActiveSeverity(_logSetting.getActiveSeverity() | as);
 }
 
-void Logger::rmActiveSeverity(const int as) {
+void Logger::rmActiveSeverity(const int & as) {
     _logSetting.setActiveSeverity(_logSetting.getActiveSeverity() ^ as);
 }
 
@@ -73,18 +73,18 @@ void Logger::enableAllSeverity() {
                       static_cast<int>(SeverityLevel::Info));
 }
 
-void Logger::setDebugSeverityEnable(const bool isEnable) {
+void Logger::setDebugSeverityEnable(const bool & isEnable) {
     if (isEnable)
         addActiveSeverity(static_cast<int>(SeverityLevel::Debug));
     else
         rmActiveSeverity(static_cast<int>(SeverityLevel::Debug));
 }
 
-void Logger::setEnable(const bool isEnable) {
+void Logger::setEnable(const bool & isEnable) {
     _logSetting.setEnable(isEnable);
 }
 
-void Logger::setInfoFormat(const std::string infoFormat) {
+void Logger::setInfoFormat(const std::string & infoFormat) {
     _logSetting.setInfo(infoFormat);
 }
 
@@ -129,10 +129,11 @@ std::string Logger::buildInfo(const std::string & format,
     bool found_specifier = false;
     char sv[64];
     std::stringstream ssr;
+    std::tm tm;
 
     auto cur_time = std::chrono::system_clock::now();
     std::time_t cur_time_tt = std::chrono::system_clock::to_time_t(cur_time);
-    std::tm * tm = std::localtime(&cur_time_tt);
+    localtime_r(&cur_time_tt, &tm);
 
     for (unsigned int i = 0; i < format.length(); i++) {
         if (format[i] == '{') {
@@ -166,7 +167,7 @@ std::string Logger::buildInfo(const std::string & format,
             memset(sv, 0, sizeof(sv));
             std::string tmp("%");
             tmp += format[i];
-            std::strftime(sv, (sizeof(sv) - sizeof(char)), tmp.c_str(), tm);
+            std::strftime(sv, (sizeof(sv) - sizeof(char)), tmp.c_str(), &tm);
             ssr << sv;
             found_specifier = false;
             continue;

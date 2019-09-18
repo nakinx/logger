@@ -88,7 +88,7 @@ public:
      *
      * @param logSetting Log settings.
      */
-    Logger(LogSetting logSetting);
+    Logger(const LogSetting & logSetting);
 
     /**
      * Destructor.
@@ -102,14 +102,14 @@ public:
      *
      * @return True if severity is enabled to log and false otherwise.
      */
-    bool checkActiveSeverity(SeverityLevel sl);
+    bool checkActiveSeverity(const SeverityLevel & sl);
 
     /**
      * Enable/Disable the functionality to log.
      *
      * @param isEnable True to enable and false to disable.
      */
-    void setEnable(const bool isEnable);
+    void setEnable(const bool & isEnable);
 
     /**
      * Set which severity will be enable to log.
@@ -117,7 +117,7 @@ public:
      * @param as Bitwise argument to represent active severity.
      *           Example of value: Serverity::Debug & Severity::Info are enable.
      */
-    void setActiveSeverity(const int as);
+    void setActiveSeverity(const int & as);
 
     /**
      * Add severitys to be log.
@@ -125,7 +125,7 @@ public:
      * @param as Bitwise argument to represent active severity.
      *           Example of value: Serverity::Debug & Severity::Info are enable.
      */
-    void addActiveSeverity(const int as);
+    void addActiveSeverity(const int & as);
 
     /**
      * Remove severitys to be log.
@@ -133,7 +133,7 @@ public:
      * @param as Bitwise argument to represent active severity.
      *           Example of value: Serverity::Debug & Severity::Info are enable.
      */
-    void rmActiveSeverity(const int as);
+    void rmActiveSeverity(const int & as);
 
     /**
      * Enable severitys to be log.
@@ -146,7 +146,7 @@ public:
      * @param isEnable True if is enable and false otherwise.
      *
      */
-    void setDebugSeverityEnable(const bool isEnable);
+    void setDebugSeverityEnable(const bool & isEnable);
 
     /**
      * Set specifiers where error has ocurred in the log record, with
@@ -183,7 +183,7 @@ public:
      *     %L            Line where method was invoked.
      *     %S            Log severity.
      */
-    void setInfoFormat(const std::string infoFormat);
+    void setInfoFormat(const std::string & infoFormat);
 
     /**
      * Write the log record based on the settings used to build the logger.

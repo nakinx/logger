@@ -40,8 +40,8 @@ public:
      * @param code Error code.
      * @param msg Error message.
      */
-    LoggerException(int code,
-                    std::string msg);
+    LoggerException(const int & code,
+                    const std::string & msg);
 
     /**
      * Get the error message.
@@ -49,6 +49,13 @@ public:
      * @return Return a string containing the erro message.
      */
     virtual const char * what() const throw();
+
+    /**
+     * Return the error code.
+     *
+     * @return Return the error code.
+     */
+    int code() const;
 
 private:
     int _code; ///< Error code.

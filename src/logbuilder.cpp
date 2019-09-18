@@ -32,8 +32,8 @@ LogBuilder & LogBuilder::getInstance() {
     return lb;
 }
 
-void LogBuilder::buildLogger(const std::string name,
-                             const std::string path) {
+void LogBuilder::buildLogger(const std::string & name,
+                             const std::string & path) {
     buildLogger(LogSetting(name, path));
 }
 
@@ -48,14 +48,14 @@ void LogBuilder::buildLogger(LogSetting ls) {
         throw LoggerException(2, "Logger name already exist.");
 }
 
-void LogBuilder::destroyLogger(const std::string name) {
+void LogBuilder::destroyLogger(const std::string & name) {
     if (_loggers.find(name) == _loggers.end())
         throw LoggerException(1, "Logger (" + name + ") doesn't exist.");
 
     _loggers.erase(name);
 }
 
-std::shared_ptr<Logger> LogBuilder::getLogger(const std::string name) {
+std::shared_ptr<Logger> LogBuilder::getLogger(const std::string & name) {
     if (_loggers.find(name) == _loggers.end())
         throw LoggerException(1, "Logger (" + name + ") doesn't exist.");
 
