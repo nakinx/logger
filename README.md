@@ -6,6 +6,31 @@ Logger
 
 Logger it's a library for log purpose, implemented with C++ language. In the open source world we have a lot of librarys that manager logs like boost, log4cxx, g3log and many others, but logger was built to be a easy code to understand, making possible customize according to your needs.
 
+Compiling and Installing
+=====
+
+Follow the commands instructions to compile, install, unistall and test:
+
+To compile in release mode:
+
+    make
+
+To compile with debug symbols:
+
+    make debug
+
+To install using the default paths (/usr/lib/ and /usr/include):
+
+    sudo make install
+
+If you wish to change the destination of the files:
+
+    make install PREFIX=<location>
+
+To test the logger application:
+
+    make test
+
 Usage
 =====
 
