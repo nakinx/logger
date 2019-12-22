@@ -1,0 +1,17 @@
+name: logger
+base: core18 
+version: '1.0+git' 
+summary: Logger Library
+description: |
+  Logger it's a library for log purpose, the main idea of this project 
+  is to be a easy code to understand, making possible customize according
+  to your needs.
+
+grade: devel 
+
+parts:
+  logger:    
+    plugin: make
+    source: .
+    build-packages:
+      - g++
