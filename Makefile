@@ -11,9 +11,9 @@ ifeq ($(CXX),)
 	CXX=g++
 endif
 
-# Install prefix.
-ifeq ($(PREFIX),)
-	PREFIX := /usr
+# Install path.
+ifeq ($(DESTDIR),)
+	DESTDIR := /usr
 endif
 
 CXXFLAGS=-fPIC -O3 -Wall -Werror --std=c++14
@@ -39,7 +39,7 @@ info:
 	@echo "Lib:" $(NAME)
 	@echo "Version:" $(VERSION)
 	@echo "Mode:" $(MODE)
-	@echo "Prefix:" $(PREFIX)
+	@echo "Destination Directory:" $(DESTDIR)
 	@echo "==============================================================================="
 
 lib$(NAME).so.$(VERSION): $(OBJS)
@@ -65,25 +65,25 @@ test:
 
 install: lib$(NAME).so.$(VERSION)
 	@echo "====== Installing Application ======"
-	@echo "Installing at" $(PREFIX)/ "the files:"
-	@echo $(PREFIX)/lib/lib$(NAME).so
-	@echo $(PREFIX)/lib/lib$(NAME).so.$(MAJOR)
-	@echo $(PREFIX)/lib/lib$(NAME).so.$(VERSION)
-	install -d $(PREFIX)/include/
-	install -m 644 src/logger.h $(PREFIX)/include/
-	install -d $(PREFIX)/lib/
-	install -m 755 lib$(NAME).so.$(MAJOR).$(MINOR) $(PREFIX)/lib/
-	ldconfig -n $(PREFIX)/lib/
-	-ln -s $(PREFIX)/lib/lib$(NAME).so.$(MAJOR) $(PREFIX)/lib/lib$(NAME).so
+	@echo "Installing at" $(DESTDIR)/ "the files:"
+	@echo $(DESTDIR)/lib/lib$(NAME).so
+	@echo $(DESTDIR)/lib/lib$(NAME).so.$(MAJOR)
+	@echo $(DESTDIR)/lib/lib$(NAME).so.$(VERSION)
+	install -d $(DESTDIR)/include/
+	install -m 644 src/logger.h $(DESTDIR)/include/
+	install -d $(DESTDIR)/lib/
+	install -m 755 lib$(NAME).so.$(MAJOR).$(MINOR) $(DESTDIR)/lib/
+	ldconfig -n $(DESTDIR)/lib/
+	-ln -s $(DESTDIR)/lib/lib$(NAME).so.$(MAJOR) $(DESTDIR)/lib/lib$(NAME).so
 	ldconfig
 
 unistall:
 	@echo "====== Uninstalling Application ======"
 	@echo "Uninstalling the files:"
-	rm -f $(PREFIX)/lib/lib$(NAME).so
-	rm -f $(PREFIX)/lib/lib$(NAME).so.$(MAJOR)
-	rm -f $(PREFIX)/lib/lib$(NAME).so.$(VERSION)  
-	rm -f $(PREFIX)/include/logger.h  
+	rm -f $(DESTDIR)/lib/lib$(NAME).so
+	rm -f $(DESTDIR)/lib/lib$(NAME).so.$(MAJOR)
+	rm -f $(DESTDIR)/lib/lib$(NAME).so.$(VERSION)  
+	rm -f $(DESTDIR)/include/logger.h  
 
 clean:
 	@echo "====== Cleaning Project ======"
