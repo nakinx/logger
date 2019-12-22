@@ -6,8 +6,8 @@ description: |
   Logger it's a library for log purpose, the main idea of this project 
   is to be a easy code to understand, making possible customize according
   to your needs.
-
 grade: devel 
+confinement: devmode
 
 parts:
   logger:    
