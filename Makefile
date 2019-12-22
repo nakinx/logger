@@ -45,6 +45,8 @@ info:
 lib$(NAME).so.$(VERSION): $(OBJS)
 	@echo "====== Linking Objects ======"
 	$(CXX) -shared -Wl,-soname,lib$(NAME).so.$(MAJOR) -o $@ $(OBJS)
+	ldconfig -n .
+	ln -s lib$(NAME).so.$(MAJOR) lib$(NAME).so
 
 %.o: %.d
 	@echo "====== Creating Object:" $@ "======"
