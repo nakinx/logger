@@ -82,9 +82,10 @@ unistall:
 	@echo "Uninstalling the files:"
 	rm -f $(PREFIX)/lib/lib$(NAME).so
 	rm -f $(PREFIX)/lib/lib$(NAME).so.$(MAJOR)
-	rm -f $(PREFIX)/lib/lib$(NAME).so.$(VERSION)    
+	rm -f $(PREFIX)/lib/lib$(NAME).so.$(VERSION)  
+	rm -f $(PREFIX)/include/logger.h  
 
 clean:
 	@echo "====== Cleaning Project ======"
 	-rm -r src/*.o *.d *.ii *.s *.so*
-	-rm $(NAME) $(NAME)_test:
+	-rm $(NAME) $(NAME)_test

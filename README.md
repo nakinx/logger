@@ -27,7 +27,12 @@ If you wish to change the destination of the files:
 
     make install PREFIX=<location>
 
-To test the logger application:
+To unistall:
+
+    sudo make unistall
+    make unistall PREFIX=<location>
+
+To test logger application:
 
     make test
 
