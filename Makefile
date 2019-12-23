@@ -5,11 +5,7 @@ MINOR:=0
 NAME:=logger
 MODE:=release
 VERSION:=$(MAJOR).$(MINOR)
-
-# Travis CI.
-ifeq ($(CXX),)
-	CXX=g++
-endif
+GXXVERSION:= $(shell g++ --version | head -n 1)
 
 # Install path.
 ifeq ($(DESTDIR),)
@@ -31,15 +27,15 @@ debug: info lib$(NAME).so.$(VERSION) $(NAME)_test
 
 info:
 	@echo "============================== Compilation Info ==============================="
-	@echo "Compiler:" $(CXX)
-	@echo "CXX Flags:" $(CXXFLAGS)
-	@echo "LD Flags:" $(LDFLAGS)
-	@echo "Sources:" $(SRCS)
-	@echo "Objects:" $(OBJS)
-	@echo "Lib:" $(NAME)
-	@echo "Version:" $(VERSION)
-	@echo "Mode:" $(MODE)
-	@echo "Destination Directory:" $(DESTDIR)
+	@echo "Compiler: $(GXXVERSION)"	
+	@echo "CXX Flags: $(CXXFLAGS)"
+	@echo "LD Flags: $(LDFLAGS)"
+	@echo "Sources: $(SRCS)"
+	@echo "Objects: $(OBJS)"
+	@echo "Lib: $(NAME)"
+	@echo "Version: $(VERSION)"
+	@echo "Mode: $(MODE)"
+	@echo "Destination Directory: $(DESTDIR)"
 	@echo "==============================================================================="
 
 lib$(NAME).so.$(VERSION): $(OBJS)
