@@ -1,8 +1,16 @@
+
+language: c++
+compiler:
+  - gcc
+
 logger:
-  include:
-    # works on Precise and Trusty
+  include:    
     - os: linux
       addons:
         apt:
+          sources:
+            - ubuntu-toolchain-r-test
           packages:
             - g++-7
+
+script: make
