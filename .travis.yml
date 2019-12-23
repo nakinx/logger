@@ -17,6 +17,8 @@ logger:
         - LOGGER_EVAL="CC=gcc-7 && CXX=g++-7"
 
 before_install:
+  - test -n $CC  && unset CC
+  - test -n $CXX && unset CXX
   - eval "${LOGGER_EVAL}"
 
 script: make
