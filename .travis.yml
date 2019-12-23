@@ -13,4 +13,10 @@ logger:
           packages:
             - g++-7
 
+      env:
+        - LOGGER_EVAL="CC=gcc-7 && CXX=g++-7"
+
+before_install:
+  - eval "${LOGGER_EVAL}"
+
 script: make
