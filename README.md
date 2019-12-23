@@ -1,5 +1,6 @@
+[![Build Status](https://travis-ci.org/nakinx/logger.svg?branch=master)](https://travis-ci.org/nakinx/logger)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/nakinx/logger.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/nakinx/logger/alerts/)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/nakinx/logger.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/nakinx/logger/alerts/)
+[![Snap Status](https://build.snapcraft.io/badge/nakinx/logger.svg)](https://build.snapcraft.io/user/nakinx/logger)
 
 Logger
 ======
