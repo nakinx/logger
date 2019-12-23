@@ -1,24 +1,12 @@
 
-language: c++
-compiler:
-  - g++-7
+language: 
+  - cpp
 
-logger:
-  include:    
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-7
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-7
 
-      env:
-        - LOGGER_EVAL="CC=gcc-7 && CXX=g++-7"
-
-before_install:
-  - test -n $CC  && unset CC
-  - test -n $CXX && unset CXX
-  - eval "${LOGGER_EVAL}"
-
-script: make
+script: CC=gcc-7 && CXX=g++-7 make
