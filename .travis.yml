@@ -1,0 +1,8 @@
+logger:
+  include:
+    # works on Precise and Trusty
+    - os: linux
+      addons:
+        apt:
+          packages:
+            - g++-7
